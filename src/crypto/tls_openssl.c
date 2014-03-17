@@ -57,7 +57,7 @@
 
 #ifdef ANDROID
 #include <openssl/pem.h>
-#include <keystore/keystore_get.h>
+#include <keystore_get.h>
 
 static BIO * BIO_from_keystore(const char *key)
 {
