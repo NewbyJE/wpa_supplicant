@@ -62,11 +62,10 @@
 static BIO * BIO_from_keystore(const char *key)
 {
 	BIO *bio = NULL;
-	uint8_t *value = NULL;
-	int length = keystore_get(key, strlen(key), &value);
+	char value[KEYSTORE_MESSAGE_SIZE];
+	int length = keystore_get(key, strlen(key), value);
 	if (length != -1 && (bio = BIO_new(BIO_s_mem())) != NULL)
 		BIO_write(bio, value, length);
-	free(value);
 	return bio;
 }
 #endif /* ANDROID */
